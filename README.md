@@ -47,21 +47,21 @@ In addition to the three method headline comparison, the script sweeps the dummy
 
 ## Repository structure
 
-experiment.py is the entry point that wires the pipeline together and exposes command line options.
+`experiment.py` is the entry point that wires the pipeline together and exposes command line options.
 
-src/config.py holds the experiment configuration and a small logging helper.
+`src/config.py` holds the experiment configuration and a small logging helper.
 
-src/data.py loads FiQA2018 through MTEB, samples a valid subset, and embeds it with Sentence Transformers, caching embeddings to disk.
+`src/data.py` loads FiQA2018 through MTEB, samples a valid subset, and embeds it with Sentence Transformers, caching embeddings to disk.
 
-src/aspe.py implements the ASPE encryption scheme, including key generation, document and query encryption, and dummy dimension injection.
+`src/aspe.py` implements the ASPE encryption scheme, including key generation, document and query encryption, and dummy dimension injection.
 
-src/retrieval.py implements exact MIPS retrieval and the recall, latency, and DRAM metrics.
+`src/retrieval.py` implements exact MIPS retrieval and the recall, latency, and DRAM metrics.
 
-src/pipeline.py runs the headline three method comparison and the dummy dimension sweep, and writes the result tables.
+`src/pipeline.py` runs the headline three method comparison and the dummy dimension sweep, and writes the result tables.
 
-src/plotting.py renders the result figures.
+`src/plotting.py` renders the result figures.
 
-results/ holds the generated CSV tables and PNG figures from the most recent run.
+`results/` holds the generated CSV tables and PNG figures from the most recent run.
 
 ## Running the experiment
 
