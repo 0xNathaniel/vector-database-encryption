@@ -1,0 +1,14 @@
+# Core experiment dependencies for the ASPE micro-benchmark (experiment.py)
+# Tested with Python 3.12.
+
+numpy>=1.26,<3
+pandas>=2.0
+matplotlib>=3.7
+seaborn>=0.12
+psutil>=5.9
+
+# Embeddings
+sentence-transformers>=2.2
+
+# Dataset (FiQA2018). mteb pulls in `datasets` + HuggingFace stack.
+mteb>=1.12
