@@ -1,14 +1,29 @@
-# Core experiment dependencies for the ASPE micro-benchmark (experiment.py)
-# Tested with Python 3.12.
+# Core experiment dependencies for the ppRAG micro-benchmark (experiment.py).
+# Tested with Python 3.11. Floors are chosen so a single `pip install` lands a
+# mutually consistent set: matplotlib>=3.8 / seaborn>=0.13 are the first
+# releases with NumPy 2 support, so pip cannot leave a NumPy-1 build of them in
+# place while upgrading NumPy (the cause of the "_ARRAY_API not found" crashes).
 
 numpy>=1.26,<3
 pandas>=2.0
-matplotlib>=3.7
-seaborn>=0.12
+matplotlib>=3.8
+seaborn>=0.13
 psutil>=5.9
 
-# Embeddings
+# Embeddings. transformers (pulled in by sentence-transformers) needs a recent
+# torch; pin the floor so the two stay compatible.
+torch>=2.4
 sentence-transformers>=2.2
 
 # Dataset (FiQA2018). mteb pulls in `datasets` + HuggingFace stack.
 mteb>=1.12
+
+# Known-plaintext-attack solver utilities (least-squares is numpy, but the
+# paper's dependency set lists scikit-learn; pinned for reproducibility).
+scikit-learn>=1.3
+
+# Fully Homomorphic Encryption (CKKS scheme) for the FHE baseline. Microsoft
+# SEAL binding; prebuilt wheels exist for CPython 3.8-3.11. If it fails to
+# install, the FHE method is skipped automatically and the rest of the run
+# still completes.
+tenseal>=0.3
